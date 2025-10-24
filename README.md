@@ -17,13 +17,12 @@ Store Keeper is a mobile application designed to help small business owners mana
 
 ## Screenshots
 
-<div align = "center">
+<div align="center">
 <img src="screenshots/homepage.png" alt="Home Page" width="200"/>
 <img src="screenshots/add_product.png" alt="Add Product Page" width="200"/>
-<img src="screenshots/product_detail.png" alt="Product Detail Page" width="200"/>
-
-</>
-<img src="screenshots/output.gif" alt="Gif Video">
+<img src="screenshots/product_details.png" alt="Product Detail Page" width="200"/>
+<img src="screenshots/output.gif" alt="Gif Video" width = "200"/>
+</div>
 
 ## Getting Started
 
