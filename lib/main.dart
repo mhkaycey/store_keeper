@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
@@ -13,12 +15,25 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
+  var _isDarkMode = false;
+  void toggleTheme() {
+    setState(() {
+      _isDarkMode = !_isDarkMode;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    log(_isDarkMode.toString());
     return ToastificationWrapper(
       child: ShadApp(
         title: 'Store Keeper Inventory',
@@ -30,7 +45,8 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.dark,
           colorScheme: const ShadZincColorScheme.dark(),
         ),
-        home: const HomePage(),
+        themeMode: _isDarkMode ? ThemeMode.dark : ThemeMode.light,
+        home: HomePage(themeToggle: toggleTheme, isDarkMode: _isDarkMode),
       ),
     );
   }

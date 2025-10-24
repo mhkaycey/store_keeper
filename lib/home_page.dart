@@ -1,15 +1,21 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
+import 'package:toastification/toastification.dart';
+
 import 'package:store_keeper/model/product_model.dart';
 import 'package:store_keeper/screens/add_product.dart';
 import 'package:store_keeper/screens/components/details_row.dart';
 import 'package:store_keeper/service/product_services.dart';
 import 'package:store_keeper/utils/toast.dart';
-import 'package:toastification/toastification.dart';
 
+// ignore: must_be_immutable
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  HomePage({super.key, required this.themeToggle, required this.isDarkMode});
+  final Function() themeToggle;
+  bool isDarkMode = false;
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -102,6 +108,13 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         elevation: 2,
+        actions: [
+          IconButton(
+            icon: Icon(widget.isDarkMode ? LucideIcons.sun : LucideIcons.moon),
+            onPressed: () => widget.themeToggle(),
+            // setState(() => widget.isDarkMode = !widget.isDarkMode),
+          ),
+        ],
       ),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
