@@ -24,6 +24,10 @@ Store Keeper is a mobile application designed to help small business owners mana
 <img alt="App Demo" src="https://raw.githubusercontent.com/mhkaycey/store_keeper/main/screenshots/output.gif" ></img>
 </div>
 
+<video autoplay loop muted playsinline>
+<source src="https://github.com/mhkaycey/store_keeper/blob/main/screenshots/vid.mov" type="video/mp4" width="200">
+
+</video>
 ## Getting Started
 
 To get a local copy up and running, follow these simple steps.
