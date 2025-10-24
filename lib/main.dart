@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
-import 'package:store_keeper/home_page.dart';
+import 'package:store_keeper/screens/home_page.dart';
 import 'package:toastification/toastification.dart';
 
 void main() {
@@ -23,7 +23,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  // This widget is the root of your application.
   var _isDarkMode = false;
   void toggleTheme() {
     setState(() {
@@ -39,11 +38,14 @@ class _MyAppState extends State<MyApp> {
         title: 'Store Keeper Inventory',
         theme: ShadThemeData(
           brightness: Brightness.light,
+          textTheme: ShadTextTheme(family: "NotoSans"),
+
           colorScheme: const ShadZincColorScheme.light(),
         ),
         darkTheme: ShadThemeData(
           brightness: Brightness.dark,
           colorScheme: const ShadZincColorScheme.dark(),
+          textTheme: ShadTextTheme(family: "NotoSans"),
         ),
         themeMode: _isDarkMode ? ThemeMode.dark : ThemeMode.light,
         home: HomePage(themeToggle: toggleTheme, isDarkMode: _isDarkMode),

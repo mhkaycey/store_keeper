@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -30,7 +30,6 @@ class _HomePageState extends State<HomePage> {
   String _selectedCategory = 'all';
   bool _isLoading = true;
 
-  // Statistics
   int _totalProducts = 0;
   double _totalValue = 0.0;
 
@@ -112,7 +111,6 @@ class _HomePageState extends State<HomePage> {
           IconButton(
             icon: Icon(widget.isDarkMode ? LucideIcons.sun : LucideIcons.moon),
             onPressed: () => widget.themeToggle(),
-            // setState(() => widget.isDarkMode = !widget.isDarkMode),
           ),
         ],
       ),
@@ -120,7 +118,6 @@ class _HomePageState extends State<HomePage> {
           ? const Center(child: CircularProgressIndicator())
           : Column(
               children: [
-                // Statistics Cards
                 Container(
                   padding: const EdgeInsets.all(20),
                   child: Row(
@@ -147,7 +144,6 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
 
-                // Search and Filter
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Row(
@@ -213,7 +209,6 @@ class _HomePageState extends State<HomePage> {
 
                 const SizedBox(height: 20),
 
-                // Products List
                 Expanded(
                   child: _filteredProducts.isEmpty
                       ? Center(
@@ -277,6 +272,8 @@ class _HomePageState extends State<HomePage> {
       isScrollControlled: true,
       builder: (context) => AddProductDialog(product: product),
     );
+
+    log("result: $result");
 
     if (result == true) {
       _loadProducts();
@@ -344,7 +341,7 @@ class _StatCard extends StatelessWidget {
     final theme = ShadTheme.of(context);
     return ShadCard(
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -397,14 +394,12 @@ class _ProductCard extends StatelessWidget {
     };
 
     return ShadCard(
-      // description: SizedBox.shrink(),
       padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       child: InkWell(
         onTap: () => _showProductDetails(context),
         borderRadius: BorderRadius.circular(8),
         child: Row(
           children: [
-            // Product Image or Icon
             Container(
               width: 60,
               height: 60,
@@ -430,7 +425,6 @@ class _ProductCard extends StatelessWidget {
             ),
             const SizedBox(width: 16),
 
-            // Product Info
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -484,7 +478,6 @@ class _ProductCard extends StatelessWidget {
               ),
             ),
 
-            // Actions
             Row(
               children: [
                 IconButton(
@@ -508,8 +501,6 @@ class _ProductCard extends StatelessWidget {
   }
 
   void _showProductDetails(BuildContext context) {
-    // final theme = ShadTheme.of(context);
-
     showShadDialog(
       context: context,
       barrierDismissible: false,

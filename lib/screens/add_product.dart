@@ -51,7 +51,38 @@ class _AddProductDialogState extends State<AddProductDialog> {
     super.dispose();
   }
 
-  Future<void> _pickImage() async {
+  void addImage() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog.adaptive(
+          title: const Text('Add Image'),
+
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ShadButton.outline(
+                child: const Text('Gallery'),
+                onPressed: () {
+                  _fromGallery();
+                  Navigator.pop(context);
+                },
+              ),
+              ShadButton.outline(
+                child: const Text('Camera'),
+                onPressed: () {
+                  _fromCamera();
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> _fromGallery() async {
     try {
       final XFile? image = await _picker.pickImage(
         source: ImageSource.gallery,
@@ -69,6 +100,30 @@ class _AddProductDialogState extends State<AddProductDialog> {
           context: context,
           toastMessage: e.toString(),
           toastTitle: "Error picking image",
+          type: ToastificationType.error,
+        );
+      }
+    }
+  }
+
+  Future<void> _fromCamera() async {
+    try {
+      final XFile? image = await _picker.pickImage(
+        source: ImageSource.camera,
+        maxWidth: 800,
+        maxHeight: 800,
+      );
+      if (image != null) {
+        setState(() {
+          _imagePath = image.path;
+        });
+      }
+    } catch (e) {
+      if (mounted) {
+        ToastUtil.showToast(
+          context: context,
+          toastMessage: e.toString(),
+          toastTitle: "Error capturing image",
           type: ToastificationType.error,
         );
       }
@@ -205,7 +260,7 @@ class _AddProductDialogState extends State<AddProductDialog> {
                           ),
                   ),
                   ShadButton.outline(
-                    onPressed: _isSaving ? null : _pickImage,
+                    onPressed: _isSaving ? null : addImage,
                     child: Text(
                       _imagePath != null ? 'Change Image' : 'Add Image',
                       style: theme.textTheme.table,

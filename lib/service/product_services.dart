@@ -121,7 +121,6 @@ class ProductServices {
     };
   }
 
-  // Close database
   Future<void> close() async {
     final db = await database;
     await db.close();
