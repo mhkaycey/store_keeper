@@ -270,7 +270,7 @@ class _HomePageState extends State<HomePage> {
     final result = await showModalBottomSheet<bool>(
       context: context,
       isScrollControlled: true,
-      builder: (context) => AddProductDialog(product: product),
+      builder: (context) => SafeArea(child: AddProductDialog(product: product)),
     );
 
     log("result: $result");
