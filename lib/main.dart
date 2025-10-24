@@ -32,7 +32,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    log(_isDarkMode.toString());
     return ToastificationWrapper(
       child: ShadApp(
         title: 'Store Keeper Inventory',

@@ -270,6 +270,9 @@ class _HomePageState extends State<HomePage> {
     final result = await showModalBottomSheet<bool>(
       context: context,
       isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
+      ),
       builder: (context) => SafeArea(child: AddProductDialog(product: product)),
     );
 
