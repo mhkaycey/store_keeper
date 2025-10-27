@@ -1,13 +1,12 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
-import 'package:store_keeper/screens/home_page.dart';
+import 'package:store_keeper/screens/onboarding/onboarding.dart';
 import 'package:toastification/toastification.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(systemNavigationBarColor: Colors.transparent),
   );
@@ -47,7 +46,11 @@ class _MyAppState extends State<MyApp> {
           textTheme: ShadTextTheme(family: "NotoSans"),
         ),
         themeMode: _isDarkMode ? ThemeMode.dark : ThemeMode.light,
-        home: HomePage(themeToggle: toggleTheme, isDarkMode: _isDarkMode),
+        home: OnboardingScreen(
+          toggleTheme: toggleTheme,
+          isDarkMode: _isDarkMode,
+        ),
+        // home: HomePage(themeToggle: toggleTheme, isDarkMode: _isDarkMode),
       ),
     );
   }

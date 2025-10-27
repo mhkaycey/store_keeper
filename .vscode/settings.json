@@ -1,3 +1,6 @@
 {
-  "cSpell.words": ["Lucide", "shadcn"]
+  "cSpell.words": ["Lucide", "shadcn"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "always"
+  }
 }
