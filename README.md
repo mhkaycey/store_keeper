@@ -26,7 +26,7 @@ Store Keeper is a mobile application designed to help small business owners mana
 
 ## Demo
 
-[Watch Video Demo](https://drive.google.com/file/d/1pmSAer5z9JNBsog23RPZ5p6G91j98uiU/view?usp=sharing)
+[Watch Video Demo](https://drive.google.com/file/d/1hbPf4FTCeGC6pN5qZYoM1vEjdnKblwpg/view?usp=share_link)
 </video>
 
 ## Getting Started

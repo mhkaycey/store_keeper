@@ -79,7 +79,6 @@ class _OnboardingScreenState extends State<OnboardingScreen>
             ),
           ),
 
-          // Animated overlay at bottom
           Positioned(
             bottom: 0,
             left: 0,
