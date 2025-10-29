@@ -239,27 +239,35 @@ class _AddProductDialogState extends State<AddProductDialog> {
               ),
 
               Row(
+                spacing: 12,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    height: size.height * 0.1,
-                    width: size.width * 0.5,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: _imagePath != null && File(_imagePath!).existsSync()
-                        ? ClipRRect(
-                            borderRadius: BorderRadius.circular(8),
-                            child: Image.file(
-                              File(_imagePath!),
-                              fit: BoxFit.cover,
+                  Expanded(
+                    child: Container(
+                      height: size.height * 0.1,
+                      // width: size.width * 0.2,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child:
+                          _imagePath != null && File(_imagePath!).existsSync()
+                          ? ClipRRect(
+                              borderRadius: BorderRadius.circular(8),
+                              child: Image.file(
+                                File(_imagePath!),
+                                fit: BoxFit.cover,
+                              ),
+                            )
+                          : const Center(
+                              child: Icon(
+                                LucideIcons.image,
+                                color: Colors.grey,
+                              ),
                             ),
-                          )
-                        : const Center(
-                            child: Icon(LucideIcons.image, color: Colors.grey),
-                          ),
+                    ),
                   ),
+
                   ShadButton.outline(
                     onPressed: _isSaving ? null : addImage,
                     child: Text(

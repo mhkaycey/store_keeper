@@ -59,6 +59,7 @@ class _OnboardingScreenState extends State<OnboardingScreen>
           Positioned.fill(
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.stretch,
+
               children: [
                 Expanded(
                   child: Image.asset(
